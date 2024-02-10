@@ -60,9 +60,31 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayMessage(message, sender) {
         const messageElement = document.createElement('div');
         messageElement.classList.add('message', sender);
-        messageElement.textContent = message;
+
+        if (sender === 'bot') {
+            // Initialize an empty string for the typewriter effect
+            let typedText = '';
+            let charIndex = 0;
+            const typingSpeed = 50; // Milliseconds between each character
+
+            // Function to simulate typing one character at a time
+            function typeChar() {
+                if (charIndex < message.length) {
+                    typedText += message[charIndex++];
+                    messageElement.textContent = typedText;
+                    setTimeout(typeChar, typingSpeed);
+                }
+            }
+
+            // Start typing
+            typeChar();
+        } else {
+            // For user messages, display immediately
+            messageElement.textContent = message;
+        }
+
         chatBox.appendChild(messageElement);
-        chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the latest message
+        chatBox.scrollTop = chatBox.scrollHeight;
     }
 
     // Simulate response based on user input
