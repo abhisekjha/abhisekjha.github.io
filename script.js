@@ -33,25 +33,30 @@ function sendMessage() {
 }
 
 function displayMessage(message, sender) {
-    const chatBox = document.getElementById('chat-box');
+    const messagesDiv = document.getElementById('messages');
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('message');
-    messageDiv.textContent = message;
-    if (sender === 'bot') {
-        messageDiv.style.backgroundColor = '#add8e6'; // Different color for bot messages
+
+    if (sender === 'user') {
+        messageDiv.classList.add('user-message');
+    } else {
+        messageDiv.classList.add('bot-message');
     }
-    chatBox.appendChild(messageDiv);
-    chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the latest message
+
+    messageDiv.textContent = message;
+    messagesDiv.appendChild(messageDiv);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight; 
 }
 
 function simulateResponse(userMessage) {
-  const response = { "Echo: " + 'about': 'Hello, I am [Your Name]. I am a [Your Profession].',
-        'contact': 'You can reach me via email at [Your Email] or phone at [Your Phone Number].',
+  const response = { "Echo: " + 'about': 'Hello, I am Abhisek. I am a Software Engineer.',
+        'contact': 'You can reach me via email at abhisekjha2020@gmail.com or phone at .......',
         // Add more responses or a default response
         'default': 'I am not sure how to answer that. Here is some information about me: [Your Information].'
   setTimeout(() => displayMessage(response, 'bot'), 1000);
 };
- return responses[input.toLowerCase()] || responses['default'];
+  const lowerInput = userMessage.toLowerCase();
+  return responses[input.toLowerCase()] || responses['default'];
 }
 
 // Side Navigation Menu JS Code
