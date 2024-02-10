@@ -23,17 +23,25 @@ document.getElementById('send-btn').addEventListener('click', function() {
 });
 
 function displayMessage(message, sender) {
-  const chatBox = document.getElementById('chat-box');
-  const msgDiv = document.createElement('div');
-  msgDiv.textContent = message;
-  msgDiv.classList.add('message', sender);
-  chatBox.appendChild(msgDiv);
-  chatBox.scrollTop = chatBox.scrollHeight;
+    const chatBox = document.getElementById('chat-box');
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message');
+    messageDiv.textContent = message;
+    if (sender === 'bot') {
+        messageDiv.style.backgroundColor = '#add8e6'; // Different color for bot messages
+    }
+    chatBox.appendChild(messageDiv);
+    chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the latest message
 }
 
 function simulateResponse(userMessage) {
-  const response = "Echo: " + userMessage;
+  const response = { "Echo: " + 'about': 'Hello, I am [Your Name]. I am a [Your Profession].',
+        'contact': 'You can reach me via email at [Your Email] or phone at [Your Phone Number].',
+        // Add more responses or a default response
+        'default': 'I am not sure how to answer that. Here is some information about me: [Your Information].'
   setTimeout(() => displayMessage(response, 'bot'), 1000);
+};
+ return responses[input.toLowerCase()] || responses['default'];
 }
 
 // Side Navigation Menu JS Code
@@ -67,3 +75,4 @@ for (let i = 0; i < navLinks.length; i++) {
     menuBtn.style.pointerEvents = "auto";
   });
 }
+
