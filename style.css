@@ -1172,3 +1172,13 @@ footer .text span a:hover{
 .chat-container.active {
   transform: scale(1); /* Expand to full size */
 }
+.chat-container {
+  /* Other styles */
+  transform: scale(0); /* Start minimized */
+  cursor: pointer; /* Indicate it's clickable */
+}
+
+/* CSS animation for expanding the chat box */
+.chat-container.active {
+  transform: scale(1); /* Expand to full size */
+}
