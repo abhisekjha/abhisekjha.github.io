@@ -11,6 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollBtn.style.display = "none";
       }
     };
+    window.sendPredefinedMessage = function(message) {
+        displayMessage(message, 'user');
+    
+        // Simulate typing before showing the response
+        setTimeout(() => {
+            simulateResponse(message);
+        }, 1000); // Adjust delay as needed to simulate typing speed
+    };
 
     // Menu Toggle for Mobile
     const menuBtn = document.querySelector('.menu-btn');
