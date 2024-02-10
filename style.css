@@ -1192,4 +1192,25 @@ footer .text span a:hover{
   50% { transform: translateY(-10px); }
 }
 
+.chat-prompts {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background: #f0f0f0; /* Light grey background */
+}
+
+.chat-prompt {
+    padding: 5px 10px;
+    background-color: #4070f4; /* Primary color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.chat-prompt:hover {
+    background-color: #3050c0; /* Darker shade for hover */
+}
+
 
