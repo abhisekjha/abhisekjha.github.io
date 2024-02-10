@@ -87,5 +87,9 @@ document.getElementById('send-btn').addEventListener('click', function() {
     input.value = ''; // Clear input field
   }
 });
+window.onload = function() {
+  displayMessage("Hi there! Ask me about the portfolio.", 'bot');
+};
+
 
 
