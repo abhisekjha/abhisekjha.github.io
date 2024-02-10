@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let nav = document.querySelector("nav");
     let scrollBtn = document.querySelector(".scroll-button a");
     window.onscroll = function() {
-      if(document.documentElement.scrollTop > 20){
+      if (document.documentElement.scrollTop > 20) {
         nav.classList.add("sticky");
         scrollBtn.style.display = "block";
-      }else{
+      } else {
         nav.classList.remove("sticky");
         scrollBtn.style.display = "none";
       }
@@ -40,22 +40,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Send message on Enter key press
+    document.getElementById('chat-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault(); // Prevent the default action
+            document.getElementById('send-btn').click(); // Click the send button programmatically
+        }
+    });
+
+    // Display message in chat
     function displayMessage(message, sender) {
         const messageElement = document.createElement('div');
         messageElement.classList.add('message', sender);
         messageElement.textContent = message;
         chatBox.appendChild(messageElement);
-        chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to the latest message
+        chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the latest message
     }
 
+    // Simulate response based on user input
     function simulateResponse(userMessage) {
-        const responses = {
-            'about': 'Hello, I am Abhisek. I am a Software Engineer.',
-            'contact': 'You can reach me via email at abhisekjha2020@gmail.com.',
-            'default': 'I am not sure how to answer that. Here is some information about me: [Your Information].'
-        };
-        const lowerInput = userMessage.toLowerCase();
-        const response = responses[lowerInput] || responses['default'];
+        let response;
+        const messageLower = userMessage.toLowerCase();
+
+        if (messageLower.includes("hello")) {
+            response = "Hi there! How can I help you today?";
+        } else if (messageLower.includes("what do you do")) {
+            response = "I'm a virtual assistant designed to provide information about Abhisek Jha's portfolio.";
+        } else if (messageLower.includes("contact")) {
+            response = "You can reach me via email at abhisekjha2020@gmail.com.";
+        } else if (messageLower.includes("projects")) {
+            response = "You can check out the Projects section for more details on my work!";
+        } else {
+            response = "Sorry, I didn't quite catch that. Could you rephrase your question or ask something else?";
+        }
+
         setTimeout(() => displayMessage(response, 'bot'), 1000);
     }
 
@@ -80,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close Side Navigation on Link Click
     let navLinks = document.querySelectorAll(".menu li a");
     for (let i = 0; i < navLinks.length; i++) {
-      navLinks[i].addEventListener("click", function() {
+      navLinks[i].addEventListener("click", () => {
         navbar.classList.remove("active");
         menuBtn.style.opacity = "1";
         menuBtn.style.pointerEvents = "auto";
