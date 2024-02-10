@@ -1157,3 +1157,15 @@ footer .text span a:hover{
   border-radius: 5px;
 }
 
+.chat-container {
+  max-width: 300px;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Update other styles based on preference */
