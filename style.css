@@ -1103,3 +1103,66 @@ footer .text span a:hover{
     color: #4070f4;
   }
 }
+/* Chat Interface Styles */
+.chat-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 1000; /* Above other content */
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-box {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+  background: #f7f8f9; /* Slightly off-white background for the chat area */
+}
+
+.chat-input-box {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+
+#chat-input {
+  width: 100%;
+  border: none;
+  padding: 10px;
+  resize: none;
+  outline: none;
+}
+
+#send-btn {
+  background-color: #4070f4; /* Matching the primary color theme */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  outline: none;
+}
+
+.message {
+  margin: 5px 0;
+  padding: 10px;
+  background-color: #e0e0e0; /* Light grey for messages */
+  border-radius: 15px;
+  word-wrap: break-word;
+}
+
+.message.user {
+  background-color: #4070f4; /* Matching the primary color theme for user messages */
+  color: white;
+  align-self: flex-end;
+}
+
+.message.bot {
+  background-color: #e0e0e0; /* Light grey for bot messages, ensuring readability */
+  align-self: flex-start;
+}
+
