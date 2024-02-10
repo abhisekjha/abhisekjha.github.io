@@ -13,6 +13,34 @@ window.onscroll = function() {
   }
 
 }
+document.getElementById('send-btn').addEventListener('click', function() {
+  const input = document.getElementById('chat-input');
+  const message = input.value.trim();
+  if(message !== '') {
+    displayMessage(message, 'user');
+    simulateResponse(message); // Simulate a response
+    input.value = ''; // Clear input field
+  }
+});
+
+function displayMessage(message, sender) {
+  const chatBox = document.getElementById('chat-box');
+  const msgDiv = document.createElement('div');
+  msgDiv.textContent = message;
+  msgDiv.classList.add('message');
+  if(sender === 'user') {
+    msgDiv.classList.add('user');
+  }
+  chatBox.appendChild(msgDiv);
+  chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+}
+
+function simulateResponse(userMessage) {
+  // Simulate a simple response based on user message
+  const response = "Echo: " + userMessage;
+  setTimeout(() => displayMessage(response, 'bot'), 1000); // Simulate bot response delay
+}
+
 
 // Side NavIgation Menu JS Code
 let body = document.querySelector("body");
