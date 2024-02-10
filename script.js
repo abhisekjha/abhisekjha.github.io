@@ -11,16 +11,16 @@ window.onscroll = function() {
   }
 };
 
-// Chat Interface JS Code
 document.getElementById('send-btn').addEventListener('click', function() {
   const input = document.getElementById('chat-input');
   const message = input.value.trim();
-  if(message !== '') {
+  if (message !== '') {
     displayMessage(message, 'user');
-    simulateResponse(message); // Here, you could add more complex logic or API calls
+    simulateResponse(message); // Improved response simulation
     input.value = ''; // Clear input field
   }
 });
+
 function sendMessage() {
     const inputBox = document.getElementById('input-box');
     const userMessage = inputBox.value.trim();
@@ -33,32 +33,34 @@ function sendMessage() {
 }
 
 function displayMessage(message, sender) {
-    const messagesDiv = document.getElementById('messages');
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message');
+  const messagesDiv = document.getElementById('messages');
+  const messageDiv = document.createElement('div');
+  messageDiv.classList.add('message');
 
-    if (sender === 'user') {
-        messageDiv.classList.add('user-message');
-    } else {
-        messageDiv.classList.add('bot-message');
-    }
+  if (sender === 'user') {
+    messageDiv.classList.add('user-message');
+  } else {
+    messageDiv.classList.add('bot-message');
+  }
 
-    messageDiv.textContent = message;
-    messagesDiv.appendChild(messageDiv);
-    messagesDiv.scrollTop = messagesDiv.scrollHeight; 
+  messageDiv.textContent = message;
+  messagesDiv.appendChild(messageDiv);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight; 
 }
 
 function simulateResponse(userMessage) {
-  const response = { "Echo: " + 'about': 'Hello, I am Abhisek. I am a Software Engineer.',
-        'contact': 'You can reach me via email at abhisekjha2020@gmail.com or phone at .......',
-        // Add more responses or a default response
-        'default': 'I am not sure how to answer that. Here is some information about me: [Your Information].'
-  setTimeout(() => displayMessage(response, 'bot'), 1000);
-};
   const lowerInput = userMessage.toLowerCase();
-  return responses[input.toLowerCase()] || responses['default'];
-}
+  const responses = {
+    'about': 'Hello, I am Abhisek. I am a Software Engineer.',
+    'contact': 'You can reach me via email at abhisekjha2020@gmail.com.',
+    'default': 'I am not sure how to answer that. Here is some information about me: [Your Information].'
+  };
 
+  // Choose response based on input, or use 'default' if not matched
+  const response = responses[lowerInput] || responses['default'];
+
+  setTimeout(() => displayMessage(response, 'bot'), 1000);
+}
 // Side Navigation Menu JS Code
 let body = document.querySelector("body");
 let navBar = document.querySelector(".navbar");
