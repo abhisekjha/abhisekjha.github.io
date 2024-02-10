@@ -21,6 +21,16 @@ document.getElementById('send-btn').addEventListener('click', function() {
     input.value = ''; // Clear input field
   }
 });
+function sendMessage() {
+    const inputBox = document.getElementById('input-box');
+    const userMessage = inputBox.value.trim();
+
+    if (userMessage) {
+        displayMessage(userMessage, 'user');
+        displayMessage(getResponse(userMessage), 'bot');
+        inputBox.value = ''; // Clear the input box
+    }
+}
 
 function displayMessage(message, sender) {
     const chatBox = document.getElementById('chat-box');
