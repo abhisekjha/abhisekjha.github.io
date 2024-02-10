@@ -90,6 +90,14 @@ document.getElementById('send-btn').addEventListener('click', function() {
 window.onload = function() {
   displayMessage("Hi there! Ask me about the portfolio.", 'bot');
 };
+window.onload = function() {
+  setTimeout(() => {
+    displayMessage("Hello! How can I help you today? Feel free to ask me anything about the portfolio.", 'bot');
+  }, 1000); // Give users a moment to see the homepage
+};
+document.querySelector('.chat-container').addEventListener('click', function() {
+  this.classList.toggle('active');
+});
 
 
 
