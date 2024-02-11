@@ -1198,34 +1198,42 @@ footer .text span a:hover{
 .chat-prompt:hover {
     background-color: #3050c0; /* Darker shade for hover */
 }
-#close-chat-btn {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    padding: 5px 10px;
-    background-color: #ff4545; /* Example: red color for visibility */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-#chat-toggle-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1050; /* Ensure it's above other content */
-    border: none;
-    background-color: transparent; /* Adjust based on your design */
-    cursor: pointer;
+/* Chat Interface Styles */
+.chat-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none; /* Initially hidden */
+  z-index: 1050; /* Ensure it's above other content */
 }
 
-.chat-container {
-    /* Your existing styles */
-    position: fixed;
-    bottom: 80px; /* Adjust based on the size of your toggle button */
-    right: 20px;
-    z-index: 1050; /* Same or higher than the toggle button */
-    display: none; /* Initially hidden */
+#chat-toggle-btn {
+  background-color: #4070f4; /* Example: primary color */
+  color: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1051; /* Above the chat container */
+}
+
+#close-chat-btn {
+  background-color: #ff4545; /* Red color for visibility */
+  color: white;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/* Typing Indicator Styles */
+.typing-indicator .dot {
+  animation: typing 1.4s infinite both;
 }
 
 
