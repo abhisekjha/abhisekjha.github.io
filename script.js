@@ -117,6 +117,29 @@ document.addEventListener('DOMContentLoaded', () => {
         typingIndicator.appendChild(dot);
     }
 
+    // Define responses
+    if (messageLower.includes("hello")) {
+        response = "Hi there! How can I help you today?";
+    } else if (messageLower.includes("what do you do")) {
+        response = "I'm a virtual assistant designed to provide information about Abhisek Jha's portfolio.";
+    } else if (messageLower.includes("contact")) {
+        response = "You can reach me via email at abhisekjha2020@gmail.com.";
+    } else if (messageLower.includes("projects")) {
+        response = "You can check out the Projects section for more details on my work!";
+    } else {
+        response = "Sorry, I didn't quite catch that. Could you rephrase your question or ask something else?";
+    }
+
+    // Show typing indicator
+    chatBox.appendChild(typingIndicator);
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    // Remove typing indicator and show response after a delay
+    setTimeout(() => {
+        chatBox.removeChild(typingIndicator);
+        displayMessage(response, 'bot');
+    }, 2000); // Adjust delay as needed
+}
 
         function sendPredefinedMessage(message) {
         // Display the user's predefined message in the chat
