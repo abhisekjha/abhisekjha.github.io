@@ -1104,6 +1104,20 @@ footer .text span a:hover{
   }
 }
 /* Chat Interface Styles */
+.chat-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 1000; /* Above other content */
+  display: flex;
+  flex-direction: column;
+}
+
 .chat-box {
   max-height: 300px;
   overflow-y: auto;
@@ -1151,96 +1165,3 @@ footer .text span a:hover{
   background-color: #e0e0e0; /* Light grey for bot messages, ensuring readability */
   align-self: flex-start;
 }
-
-/* Typing Indicator Styles */
-.typing-indicator {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.typing-indicator .dot {
-  height: 8px;
-  width: 8px;
-  margin: 0 4px;
-  background-color: #4070f4;
-  border-radius: 50%;
-  animation: typing 1.4s infinite both;
-}
-
-.typing-indicator .dot:nth-child(1) { animation-delay: 0s; }
-.typing-indicator .dot:nth-child(2) { animation-delay: 0.2s; }
-.typing-indicator .dot:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes typing {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.chat-prompts {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-    background: #f0f0f0; /* Light grey background */
-}
-
-.chat-prompt {
-    padding: 5px 10px;
-    background-color: #4070f4; /* Primary color */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.chat-prompt:hover {
-    background-color: #3050c0; /* Darker shade for hover */
-}
-/* Chat Interface Styles */
-.chat-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: none; /* Initially hidden */
-  z-index: 1050; /* Ensure it's above other content */
-}
-
-#chat-toggle-btn {
-  width: 60px; /* Adjust size as needed */
-  height: 60px; /* Adjust size as needed */
-  border-radius: 50%;
-  background-color: #4070f4; /* Your desired background color */
-  color: white; /* Your desired icon color */
-  border: none;
-  cursor: pointer;
-  position: fixed;
-  bottom: 20px; /* Adjust position as needed */
-  right: 20px; /* Adjust position as needed */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional: Adds shadow for better visibility */
-  z-index: 1051; /* Ensures it's above other content */
-  background-image: url('path/to/your-image.jpg'); /* Path to your image */
-  background-size: cover; /* Ensures the image covers the button area */
-  background-position: center; /* Centers the background image */
-}
-
-#close-chat-btn {
-  background-color: #ff4545; /* Red color for visibility */
-  color: white;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-
-/* Typing Indicator Styles */
-.typing-indicator .dot {
-  animation: typing 1.4s infinite both;
-}
-
-
