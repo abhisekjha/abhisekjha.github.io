@@ -2,19 +2,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sticky Navigation Menu JS Code
     let nav = document.querySelector("nav");
     let scrollBtn = document.querySelector(".scroll-button a");
+    
     window.onscroll = function() {
-      if (document.documentElement.scrollTop > 20) {
-        nav.classList.add("sticky");
-        scrollBtn.style.display = "block";
-      } else {
-        nav.classList.remove("sticky");
-        scrollBtn.style.display = "none";
-      }
+        if (document.documentElement.scrollTop > 20) {
+            nav.classList.add("sticky");
+            scrollBtn.style.display = "block";
+        } else {
+            nav.classList.remove("sticky");
+            scrollBtn.style.display = "none";
+        }
     };
 
     // Menu Toggle for Mobile
     const menuBtn = document.querySelector('.menu-btn');
     const navbar = document.querySelector('.navbar');
+    
     menuBtn.addEventListener('click', () => {
         navbar.classList.toggle('active');
         menuBtn.classList.toggle('active');
@@ -41,10 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Send message on Enter key press
-    document.getElementById('chat-input').addEventListener('keypress', function(e) {
+    chatInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault(); // Prevent the default action
-            document.getElementById('send-btn').click(); // Click the send button programmatically
+            sendBtn.click(); // Click the send button programmatically
         }
     });
 
@@ -54,103 +56,51 @@ document.addEventListener('DOMContentLoaded', () => {
         messageElement.classList.add('message', sender);
 
         if (sender === 'bot') {
-            // Initialize an empty string for the typewriter effect
             let typedText = '';
             let charIndex = 0;
             const typingSpeed = 50; // Milliseconds between each character
 
-            // Function to simulate typing one character at a time
             function typeChar() {
                 if (charIndex < message.length) {
-                    typedText += message[charIndex++];
+                    typedText += message.charAt(charIndex++);
                     messageElement.textContent = typedText;
                     setTimeout(typeChar, typingSpeed);
                 }
             }
-
-            // Start typing
             typeChar();
         } else {
-            // For user messages, display immediately
             messageElement.textContent = message;
         }
-
         chatBox.appendChild(messageElement);
-        chatBox.scrollTop = chatBox.scrollHeight;
+        chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the latest message
     }
 
     // Simulate response based on user input
     function simulateResponse(userMessage) {
-    let response;
-    const messageLower = userMessage.toLowerCase();
-    const typingIndicator = document.createElement('div');
-    typingIndicator.classList.add('typing-indicator');
-    for (let i = 0; i < 3; i++) {
-        const dot = document.createElement('div');
-        dot.classList.add('dot');
-        typingIndicator.appendChild(dot);
-    }
+        const responses = {
+            "hello": "Hi there! How can I help you today?",
+            "what do you do": "I'm a virtual assistant designed to provide information about Abhisek Jha's portfolio.",
+            "contact": "You can reach me via email at abhisekjha2020@gmail.com.",
+            "projects": "You can check out the Projects section for more details on my work!"
+        };
 
-    // Define responses
-    if (messageLower.includes("hello")) {
-        response = "Hi there! How can I help you today?";
-    } else if (messageLower.includes("what do you do")) {
-        response = "I'm a virtual assistant designed to provide information about Abhisek Jha's portfolio.";
-    } else if (messageLower.includes("contact")) {
-        response = "You can reach me via email at abhisekjha2020@gmail.com.";
-    } else if (messageLower.includes("projects")) {
-        response = "You can check out the Projects section for more details on my work!";
-    } else {
-        response = "Sorry, I didn't quite catch that. Could you rephrase your question or ask something else?";
-    }
+        let response = "Sorry, I didn't quite catch that. Could you rephrase your question or ask something else?";
+        const messageLower = userMessage.toLowerCase();
+        
+        Object.keys(responses).forEach(key => {
+            if (messageLower.includes(key)) {
+                response = responses[key];
+            }
+        });
 
-    // Show typing indicator
-    chatBox.appendChild(typingIndicator);
-    chatBox.scrollTop = chatBox.scrollHeight;
-
-    // Remove typing indicator and show response after a delay
-    setTimeout(() => {
-        chatBox.removeChild(typingIndicator);
         displayMessage(response, 'bot');
-    }, 2000); // Adjust delay as needed
-}
+    }
+
+    window.sendPredefinedMessage = sendPredefinedMessage;
+
     function sendPredefinedMessage(message) {
-    // Display the user's predefined message in the chat
-    displayMessage(message, 'user');
-
-    // Simulate typing before showing the response
-    setTimeout(() => {
-        simulateResponse(message);
-    }, 1000); // Adjust delay as needed to simulate typing speed
-}
-
-
-    // Side Navigation Menu JS Code
-    let cancelBtn = document.querySelector(".cancel-btn");
-    menuBtn.onclick = function() {
-      navbar.classList.add("active");
-      menuBtn.style.opacity = "0";
-      menuBtn.style.pointerEvents = "none";
-      document.body.style.overflow = "hidden";
-      scrollBtn.style.pointerEvents = "none";
-    };
-
-    cancelBtn.onclick = function() {
-      navbar.classList.remove("active");
-      menuBtn.style.opacity = "1";
-      menuBtn.style.pointerEvents = "auto";
-      document.body.style.overflow = "auto";
-      scrollBtn.style.pointerEvents = "auto";
-    };
-
-    // Close Side Navigation on Link Click
-    let navLinks = document.querySelectorAll(".menu li a");
-    for (let i = 0; i < navLinks.length; i++) {
-      navLinks[i].addEventListener("click", () => {
-        navbar.classList.remove("active");
-        menuBtn.style.opacity = "1";
-        menuBtn.style.pointerEvents = "auto";
-      });
+        displayMessage(message, 'user');
+        setTimeout(() => simulateResponse(message), 1000);
     }
 
     // Typed.js for Typewriter Effect Initialization
