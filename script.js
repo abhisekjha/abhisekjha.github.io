@@ -92,6 +92,16 @@ document.addEventListener('DOMContentLoaded', () => {
         displayMessage(response, 'bot');
     }, 2000); // Adjust delay as needed
 }
+    function sendPredefinedMessage(message) {
+    // Display the user's predefined message in the chat
+    displayMessage(message, 'user');
+
+    // Simulate typing before showing the response
+    setTimeout(() => {
+        simulateResponse(message);
+    }, 1000); // Adjust delay as needed to simulate typing speed
+}
+
 
     // Side Navigation Menu JS Code
     let cancelBtn = document.querySelector(".cancel-btn");
