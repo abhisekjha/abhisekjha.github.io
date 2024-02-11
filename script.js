@@ -20,6 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000); // Adjust delay as needed to simulate typing speed
     };
 
+    const closeChatBtn = document.getElementById('close-chat-btn');
+    const chatContainer = document.getElementById('chat-container');
+
+    closeChatBtn.addEventListener('click', () => {
+        chatContainer.style.display = 'none'; // Hide the chat container
+    });
+
+
     // Menu Toggle for Mobile
     const menuBtn = document.querySelector('.menu-btn');
     const navbar = document.querySelector('.navbar');
