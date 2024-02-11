@@ -1104,20 +1104,6 @@ footer .text span a:hover{
   }
 }
 /* Chat Interface Styles */
-.chat-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 320px;
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-  z-index: 1000; /* Above other content */
-  display: flex;
-  flex-direction: column;
-}
-
 .chat-box {
   max-height: 300px;
   overflow-y: auto;
@@ -1222,6 +1208,24 @@ footer .text span a:hover{
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+#chat-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050; /* Ensure it's above other content */
+    border: none;
+    background-color: transparent; /* Adjust based on your design */
+    cursor: pointer;
+}
+
+.chat-container {
+    /* Your existing styles */
+    position: fixed;
+    bottom: 80px; /* Adjust based on the size of your toggle button */
+    right: 20px;
+    z-index: 1050; /* Same or higher than the toggle button */
+    display: none; /* Initially hidden */
 }
 
 
