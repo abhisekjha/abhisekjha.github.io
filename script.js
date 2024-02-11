@@ -49,15 +49,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function simulateResponse(userMessage) {
-        const responses = {
-            'about': 'Hello, I am Abhisek. I am a Software Engineer.',
-            'contact': 'You can reach me via email at abhisekjha2020@gmail.com.',
-            'default': 'I am not sure how to answer that. Here is some information about me: [Your Information].'
-        };
-        const lowerInput = userMessage.toLowerCase();
-        const response = responses[lowerInput] || responses['default'];
-        setTimeout(() => displayMessage(response, 'bot'), 1000);
+    let response;
+
+    // Convert the user message to lowercase for easier comparison
+    const messageLower = userMessage.toLowerCase();
+
+    // Example of adding more personalized responses
+    if (messageLower.includes("hello")) {
+        response = "Hi there! How can I help you today?";
+    } else if (messageLower.includes("what do you do")) {
+        response = "I'm a virtual assistant designed to provide information about Abhisek Jha's portfolio.";
+    } else if (messageLower.includes("contact")) {
+        response = "You can reach me via email at abhisekjha2020@gmail.com.";
+    } else if (messageLower.includes("projects")) {
+        response = "You can check out the Projects section for more details on my work!";
+    } else {
+        // Default response for unrecognized inputs
+        response = "Sorry, I didn't quite catch that. Could you rephrase your question or ask something else?";
     }
+
+    setTimeout(() => displayMessage(response, 'bot'), 1000);
+}
+
 
     // Side Navigation Menu JS Code
     let cancelBtn = document.querySelector(".cancel-btn");
