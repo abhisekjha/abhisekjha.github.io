@@ -21,7 +21,17 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const closeChatBtn = document.getElementById('close-chat-btn');
+     const chatToggleBtn = document.getElementById('chat-toggle-btn');
     const chatContainer = document.getElementById('chat-container');
+
+    chatToggleBtn.addEventListener('click', () => {
+        // Check if the chat is currently displayed and toggle its state
+        if (chatContainer.style.display === 'none') {
+            chatContainer.style.display = 'block';
+        } else {
+            chatContainer.style.display = 'none';
+        }
+    });
 
     closeChatBtn.addEventListener('click', () => {
         chatContainer.style.display = 'none'; // Hide the chat container
