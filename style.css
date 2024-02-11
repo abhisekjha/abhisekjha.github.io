@@ -1208,17 +1208,21 @@ footer .text span a:hover{
 }
 
 #chat-toggle-btn {
-  background-color: #4070f4; /* Example: primary color */
-  color: white;
+  width: 60px; /* Adjust size as needed */
+  height: 60px; /* Adjust size as needed */
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
+  background-color: #4070f4; /* Your desired background color */
+  color: white; /* Your desired icon color */
   border: none;
+  cursor: pointer;
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1051; /* Above the chat container */
+  bottom: 20px; /* Adjust position as needed */
+  right: 20px; /* Adjust position as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional: Adds shadow for better visibility */
+  z-index: 1051; /* Ensures it's above other content */
 }
 
 #close-chat-btn {
