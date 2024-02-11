@@ -96,12 +96,15 @@ document.addEventListener('DOMContentLoaded', () => {
         displayMessage(response, 'bot');
     }
 
-    window.sendPredefinedMessage = sendPredefinedMessage;
-
+   
     function sendPredefinedMessage(message) {
-        displayMessage(message, 'user');
-        setTimeout(() => simulateResponse(message), 1000);
-    }
+    displayMessage(message, 'user');
+    setTimeout(() => simulateResponse(message), 1000);
+}
+
+// Attach sendPredefinedMessage to the window object outside any other function
+window.sendPredefinedMessage = sendPredefinedMessage;
+
 
     // Typed.js for Typewriter Effect Initialization
     new Typed(".auto-type", {
