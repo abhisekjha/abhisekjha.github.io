@@ -41,20 +41,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function displayMessage(message, sender) {
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('message', sender);
-        messageElement.textContent = message;
-        chatBox.appendChild(messageElement);
-        chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to the latest message
-    }
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message', sender);
+    messageElement.textContent = message;
+    chatBox.appendChild(messageElement);
+    chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the latest message
+}
+
 
     function simulateResponse(userMessage) {
     let response;
-
-    // Convert the user message to lowercase for easier comparison
     const messageLower = userMessage.toLowerCase();
 
-    // Example of adding more personalized responses
     if (messageLower.includes("hello")) {
         response = "Hi there! How can I help you today?";
     } else if (messageLower.includes("what do you do")) {
@@ -64,12 +62,18 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (messageLower.includes("projects")) {
         response = "You can check out the Projects section for more details on my work!";
     } else {
-        // Default response for unrecognized inputs
         response = "Sorry, I didn't quite catch that. Could you rephrase your question or ask something else?";
     }
 
     setTimeout(() => displayMessage(response, 'bot'), 1000);
 }
+    document.getElementById('chat-input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) { // Prevent sending with Shift+Enter
+        e.preventDefault(); // Prevent the default action
+        document.getElementById('send-btn').click(); // Click the send button programmatically
+    }
+});
+
 
 
     // Side Navigation Menu JS Code
