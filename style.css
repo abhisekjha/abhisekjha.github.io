@@ -1223,6 +1223,9 @@ footer .text span a:hover{
   align-items: center;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional: Adds shadow for better visibility */
   z-index: 1051; /* Ensures it's above other content */
+  background-image: url('path/to/your-image.jpg'); /* Path to your image */
+  background-size: cover; /* Ensures the image covers the button area */
+  background-position: center; /* Centers the background image */
 }
 
 #close-chat-btn {
