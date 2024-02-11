@@ -1212,5 +1212,16 @@ footer .text span a:hover{
 .chat-prompt:hover {
     background-color: #3050c0; /* Darker shade for hover */
 }
+#close-chat-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px 10px;
+    background-color: #ff4545; /* Example: red color for visibility */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
 
